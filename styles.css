@@ -1,0 +1,326 @@
+:root {
+  --bg: #08050f;
+  --panel: rgba(17, 12, 31, 0.78);
+  --panel-strong: rgba(20, 14, 36, 0.92);
+  --border: rgba(255, 255, 255, 0.11);
+  --text: #f7f4ff;
+  --muted: rgba(247, 244, 255, 0.72);
+  --gold: #f4c978;
+  --purple: #8a63ff;
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 4, 12, 0.80), rgba(6, 4, 12, 0.96)),
+    radial-gradient(circle at 18% 14%, rgba(138, 99, 255, 0.24), transparent 30%),
+    radial-gradient(circle at 84% 20%, rgba(244, 201, 120, 0.12), transparent 24%),
+    radial-gradient(circle at 55% 100%, rgba(255, 99, 174, 0.10), transparent 22%),
+    url('hero-bg.png') center/cover no-repeat;
+  transform: scale(1.02);
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.06fr) minmax(320px, 0.94fr);
+  gap: 22px;
+  align-items: stretch;
+  padding: 28px;
+}
+
+.photo-card,
+.hero-card {
+  min-height: calc(100vh - 56px);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.photo-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(22, 14, 44, 0.84), rgba(10, 8, 20, 0.92));
+}
+
+.photo-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 5, 15, 0.12), rgba(8, 5, 15, 0.65)),
+    radial-gradient(circle at 18% 16%, rgba(138, 99, 255, 0.20), transparent 28%),
+    radial-gradient(circle at 80% 22%, rgba(244, 201, 120, 0.18), transparent 22%);
+}
+
+.photo-card__brand {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+}
+
+.photo-card__bottom {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.photo-card__site {
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(14, 10, 26, 0.58);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.photo-card__slogan {
+  width: fit-content;
+  max-width: 100%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(14, 10, 26, 0.52);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(247, 244, 255, 0.94);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.photo-card__slogan--accent {
+  border-color: rgba(244, 201, 120, 0.26);
+}
+
+.hero-card {
+  background: linear-gradient(180deg, rgba(24, 18, 45, 0.94), rgba(10, 8, 20, 0.94));
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-pill {
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 18px 0 12px;
+  font-size: clamp(38px, 5vw, 66px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.hero-lead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.action-card {
+  min-height: 116px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 22px;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 201, 120, 0.38);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.26);
+}
+
+.action-card--primary {
+  background: linear-gradient(135deg, rgba(138, 99, 255, 0.18), rgba(244, 201, 120, 0.12));
+  border-color: rgba(244, 201, 120, 0.26);
+}
+
+.action-card--disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.action-card--disabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.11);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.action-card__icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  font-size: 27px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.action-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-card__text strong {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.action-card__text small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-meta__domain {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.site-meta__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 18px rgba(244, 201, 120, 0.85);
+}
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .photo-card,
+  .hero-card {
+    min-height: auto;
+  }
+
+  .photo-card {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-card {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .photo-card {
+    border-radius: 24px;
+    aspect-ratio: 4 / 5;
+  }
+
+  .photo-card__brand {
+    font-size: 22px;
+    top: 16px;
+    left: 16px;
+  }
+
+  .photo-card__bottom {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .hero-lead {
+    font-size: 15px;
+  }
+
+  .buttons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-card {
+    min-height: 98px;
+    border-radius: 18px;
+  }
+
+  .action-card__text strong {
+    font-size: 20px;
+  }
+
+  .site-meta {
+    flex-wrap: wrap;
+  }
+}

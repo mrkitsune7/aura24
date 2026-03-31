@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA MARKET</title>
+  <meta name="description" content="AURA MARKET — быстрые переходы: покупка 24/7, суппорт, чат и канал." />
+  <meta name="theme-color" content="#120f1e" />
+  <meta property="og:title" content="AURA MARKET" />
+  <meta property="og:description" content="Покупка 24/7, суппорт, чат и канал — в один клик." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="hero-bg.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <main class="layout">
+    <section class="photo-card" aria-label="Фото AURA MARKET">
+      <img src="hero-bg.png" alt="AURA MARKET" class="photo-card__image" />
+      <div class="photo-card__overlay"></div>
+      <div class="photo-card__brand">AURA MARKET ✨</div>
+      <div class="photo-card__bottom">
+        <div class="photo-card__site">aura24.cc</div>
+        <div class="photo-card__slogan">Стиль, доступный каждому 🖤</div>
+        <div class="photo-card__slogan photo-card__slogan--accent">Покупай с вайбом 🔥</div>
+      </div>
+    </section>
+
+    <section class="hero-card">
+      <div class="brand-pill">AURA MARKET ✨</div>
+      <h1>Быстрый доступ<br />ко всему AURA</h1>
+      <p class="hero-lead">
+        Выбирай нужный раздел и переходи сразу: <strong>покупка 24/7</strong>,
+        <strong>суппорт</strong>, <strong>чат</strong> и <strong>канал</strong>.
+      </p>
+
+      <div class="buttons-grid">
+        <a class="action-card action-card--primary" id="buy-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="action-card__icon">🤖</span>
+          <span class="action-card__text">
+            <strong>Покупка 24/7</strong>
+            <small>Открыть основной вход</small>
+          </span>
+        </a>
+
+        <a class="action-card" id="support-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="action-card__icon">🛟</span>
+          <span class="action-card__text">
+            <strong>Суппорт</strong>
+            <small>Связаться с поддержкой</small>
+          </span>
+        </a>
+
+        <a class="action-card" id="chat-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="action-card__icon">💬</span>
+          <span class="action-card__text">
+            <strong>Чат</strong>
+            <small>Перейти в сообщество</small>
+          </span>
+        </a>
+
+        <a class="action-card" id="channel-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="action-card__icon">📢</span>
+          <span class="action-card__text">
+            <strong>Канал</strong>
+            <small>Новости и обновления</small>
+          </span>
+        </a>
+      </div>
+
+      <div class="site-meta">
+        <span class="site-meta__domain">aura24.cc</span>
+        <span class="site-meta__dot"></span>
+        <span class="site-meta__text">быстрый доступ ко всему AURA</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+    const links = window.AURA_LINKS || {};
+    const mapping = {
+      'buy-link': links.buy,
+      'support-link': links.support,
+      'chat-link': links.chat,
+      'channel-link': links.channel,
+    };
+
+    Object.entries(mapping).forEach(([id, href]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (href && href !== '#') {
+        el.href = href;
+      } else {
+        el.href = '#';
+        el.classList.add('action-card--disabled');
+        el.setAttribute('aria-disabled', 'true');
+        el.addEventListener('click', (event) => event.preventDefault());
+      }
+    });
+  </script>
+</body>
+</html>
